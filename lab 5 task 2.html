@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Number Analyzer</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            background: #f4f6f9;
+        }
+
+        .box {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        input, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        button {
+            background: #2d89ef;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1b5fad;
+        }
+
+        #result {
+            margin-top: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h3>Number Analyzer</h3>
+    <input type="number" id="num" placeholder="Type a number">
+    <button id="checkBtn">Analyze</button>
+    <p id="result"></p>
+</div>
+
+<script>
+const input = document.getElementById("num");
+const result = document.getElementById("result");
+
+document.getElementById("checkBtn").addEventListener("click", () => {
+    if (!input.value) {
+        result.textContent = "Enter a number!";
+        result.style.color = "black";
+        return;
+    }
+
+    const n = Number(input.value);
+    let type = n === 0 ? "Zero" :
+               n > 0 ? "Positive" : "Negative";
+
+    let parity = n !== 0 ? (n % 2 === 0 ? "Even" : "Odd") : "";
+
+    result.textContent = n === 0 
+        ? "Zero (not positive or negative)" 
+        : `${parity} and ${type}`;
+
+    result.style.color = n > 0 ? "green" : n < 0 ? "red" : "blue";
+});
+</script>
+
+</body>
+</html>

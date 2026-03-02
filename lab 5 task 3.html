@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Array Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            width: 350px;
+            margin: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            background: #2c7be5;
+            color: white;
+            cursor: pointer;
+            border-radius: 6px;
+        }
+
+        button:hover {
+            background: #1a5fb4;
+        }
+
+        #output {
+            margin-top: 15px;
+            text-align: left;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h3>Simple Array Tool</h3>
+    <button id="runBtn">Run</button>
+    <div id="output"></div>
+</div>
+
+<script>
+document.getElementById("runBtn").addEventListener("click", () => {
+
+    const arr = [7, 18, 4, 25, 10, 2];
+
+    const sum = arr.reduce((a, b) => a + b, 0);
+    const max = Math.max(...arr);
+    const reversed = [...arr].reverse();
+
+    const out = document.getElementById("output");
+    out.innerHTML = "";
+
+    const data = [
+        "Array: " + arr.join(", "),
+        "Sum: " + sum,
+        "Max: " + max,
+        "Reversed: " + reversed.join(", ")
+    ];
+
+    data.forEach(item => {
+        const p = document.createElement("p");
+        p.textContent = item;
+        out.appendChild(p);
+    });
+});
+</script>
+
+</body>
+</html>
